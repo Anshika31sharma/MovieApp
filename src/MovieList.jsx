@@ -35,16 +35,22 @@ const MovieCard = ({ movie }) => {
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [category, setCategory] = useState("now_playing");
 
   useEffect(() => {
-    fetch(
-      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
-      options
-    )
+    fetchMovies(category);
+  }, [category]); 
+
+  const fetchMovies = (category) => {
+    fetch(`https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`, options)
       .then((response) => response.json())
       .then((data) => setMovies(data.results))
       .catch((err) => console.error(err));
-  }, []);
+  };
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  };
 
   const filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -58,10 +64,18 @@ const MovieList = () => {
       <input
         type="text"
         placeholder="Search for a movie..."
-        className="lg:w-96 w-64 p-2 border flex rounded mb-16 mx-auto"
+        className="lg:w-96 w-64 p-2 border flex rounded mb-10 mx-auto"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+      <div className="flex  mb-10">
+        <select value={category} onChange={handleCategoryChange} className="p-2 border rounded">
+          <option value="now_playing">Now Playing</option>
+          <option value="popular">Popular</option>
+          <option value="upcoming">Upcoming</option>
+          <option value="top_rated">Top Rated</option>
+        </select>
+      </div>
 
       <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {filteredMovies.map((movie) => (
