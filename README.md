@@ -1,8 +1,30 @@
-# React + Vite
+# Movie Search App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple movie search web application built with React.js and Tailwind CSS. It allows users to search for their favorite movies and view details about each movie.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Search for movies by title
+- View movie details including title, overview, adult type, original language, popularity, and release date
+- Responsive design for various screen sizes
+
+
+## Technologies Used
+
+- **React Js**: JavaScript library for building user interfaces.
+- **Tailwind CSS**: Utility-first CSS framework for styling the user interface.
+- **Git**: Version control system for tracking changes in the project.
+- **npm**: Package manager for installing project dependencies.
+
+
+## Setup Instructions
+
+1. Clone the repository: `git clone git@github.com:Anshika31sharma/MovieApp.git`
+2. Navigate to the project directory: `cd MovieApp`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm run dev`
+5. Open your browser and visit `http://localhost:5173` to view the app.
+
+## Author
+
+**Anshika Sharma**
